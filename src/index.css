@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 260 100% 6%;
+    --foreground: 0 0% 100%;
+
+    --card: 260 60% 12%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 260 60% 12%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 270 91% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 197 100% 64%;
+    --secondary-foreground: 260 100% 6%;
+
+    --muted: 260 30% 20%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 330 81% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 260 30% 20%;
+    --input: 260 30% 20%;
+    --ring: 270 91% 65%;
+
+    --radius: 0.75rem;
+
+    /* Custom colors */
+    --purple-glow: 270 91% 65%;
+    --cyan-glow: 197 100% 64%;
+    --pink-glow: 330 81% 60%;
+    --green-glow: 122 39% 49%;
+    
+    --stat-card: 260 50% 15%;
+  }
+
+  .dark {
+    --background: 260 100% 6%;
+    --foreground: 0 0% 100%;
+    --card: 260 60% 12%;
+    --card-foreground: 0 0% 100%;
+    --popover: 260 60% 12%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 270 91% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 197 100% 64%;
+    --secondary-foreground: 260 100% 6%;
+    --muted: 260 30% 20%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 330 81% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 260 30% 20%;
+    --input: 260 30% 20%;
+    --ring: 270 91% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-display antialiased;
+  }
+}
+
+@layer components {
+  .grid-background {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .ambient-glow {
+    background:
+      radial-gradient(circle at 15% 50%, hsl(var(--purple-glow) / 0.15), transparent 40%),
+      radial-gradient(circle at 85% 50%, hsl(var(--cyan-glow) / 0.15), transparent 40%);
+  }
+
+  .about-glow {
+    background:
+      radial-gradient(circle at 15% 50%, hsl(var(--purple-glow) / 0.2), transparent 50%),
+      radial-gradient(circle at 85% 50%, hsl(var(--pink-glow) / 0.2), transparent 50%),
+      radial-gradient(circle at 50% 90%, hsl(var(--green-glow) / 0.2), transparent 50%);
+  }
+
+  .contact-glow::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 10% 50%, hsl(var(--purple-glow) / 0.2), transparent 40%),
+      radial-gradient(circle at 90% 50%, hsl(var(--cyan-glow) / 0.2), transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .gradient-text {
+    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-rainbow {
+    background: linear-gradient(to right, #e73c7e, #23a6d5, #23d5ab);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .btn-primary-glow {
+    @apply bg-primary text-primary-foreground;
+    box-shadow: 0 0 20px hsl(var(--purple-glow) / 0.5);
+  }
+
+  .btn-primary-glow:hover {
+    box-shadow: 0 0 30px hsl(var(--purple-glow) / 0.7);
+  }
+
+  .btn-secondary-glow {
+    @apply bg-transparent text-secondary border border-secondary;
+    box-shadow: 0 0 15px hsl(var(--cyan-glow) / 0.3);
+  }
+
+  .btn-secondary-glow:hover {
+    @apply bg-secondary/10;
+    box-shadow: 0 0 25px hsl(var(--cyan-glow) / 0.5);
+  }
+
+  .social-icon-glow {
+    box-shadow: 0 0 10px hsl(var(--purple-glow) / 0.4);
+  }
+
+  .social-icon-glow:hover {
+    box-shadow: 0 0 15px hsl(var(--purple-glow) / 0.6), 0 0 5px hsl(var(--cyan-glow) / 0.4);
+  }
+
+  .stat-card-hover:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px hsl(var(--purple-glow) / 0.5);
+  }
+
+  .project-card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .input-glow:focus-within {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 15px hsl(var(--purple-glow) / 0.3);
+  }
+
+  .gradient-button {
+    background: linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--cyan-glow)) 100%);
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 10px hsl(var(--primary));
+  }
+
+  .border-glow-cyan {
+    border-bottom: 2px solid hsl(var(--secondary));
+    box-shadow: 0 2px 8px hsl(var(--cyan-glow) / 0.5);
+  }
+}
